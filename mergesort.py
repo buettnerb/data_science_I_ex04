@@ -39,7 +39,7 @@ def merge_sort(orig_list: list) -> None:
 
     # All elements in the two separate lists are gone through and compared to the next element in the other list.
     # As long as we haven't seen every element in both lists ...
-    while ind_left < len(left) or ind_right < len(right):
+    while ind_left < len(left) and ind_right < len(right):
         # ... we compare the next elements in the lists
         # and add the smaller one to the list of the recursive level above at the corresponding index.
         if left[ind_left] <= right[ind_right]:
