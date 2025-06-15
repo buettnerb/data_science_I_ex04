@@ -1,6 +1,4 @@
 # Imports at the beginning:
-from operator import index
-
 import matplotlib.pyplot as plt
 
 
