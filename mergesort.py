@@ -68,19 +68,37 @@ def merge_sort(orig_list: list) -> None:
 # Example with visualisations
 my_list = [54, 26, 93, 17, 77, 31, 44, 55, 20]
 
-# Following isn't needed as len(list) is automatically assigned to x-values.
-# x = range(len(my_list))
+fig, axes = plt.subplots(
+    nrows=1,
+    ncols=2,
+    figsize=(10, 4),
+    # In case we don't need the values on the y-axis of the second plot:
+    sharey=True
+)
 
 # Before sorting
-plt.plot(my_list)
-plt.title("Before sorting")
-# Depending on whether we want both lines in one plot (0) or single plots (1)
-# we include (1) or don't include (0) the following line:
-plt.show()
+axes[0].bar(
+    x=range(len(my_list)),
+    height=my_list,
+)
+axes[0].set_title("Original list", fontsize=16)
+axes[0].set_ylabel("Value", fontsize=12)
 
+# Sort
 merge_sort(my_list)
 
 # After sorting
-plt.plot(my_list)
-plt.title("After sorting")
+axes[1].bar(
+    x=range(len(my_list)),
+    height=my_list,
+)
+axes[1].set_title("Sorted list", fontsize=16)
+
+# Same for both subplots:
+for ax in axes:
+    ax.set_xlabel("Index", fontsize=12)
+    ax.spines["right"].set_visible(False)
+    ax.spines["top"].set_visible(False)
+
+fig.tight_layout()
 plt.show()
